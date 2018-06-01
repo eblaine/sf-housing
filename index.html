@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="box-style.css"/>
+        <!-- Makes call to rendering API -->
+        <script src="renderer.js"></script>
+        <!-- Puts an object called `data` in global scope -->
+        <!-- TODO: add the static data points to this file (the last will be editable in JS) -->
+        <script src="data.js"></script> 
+        
+    </head>
+    <body>
+        
+        <div>It's 1990!</div>
+        <div id="1990"></div>
+
+        <div>asdf</div>
+        <div id="2000"></div>
+        
+
+        <script>
+            var rend = new Renderer();
+            rend.render('1990', data['1990']); // todo: render more boxes inside different divs
+        </script>
+
+    </body>
+</html>
