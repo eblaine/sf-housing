@@ -19,7 +19,10 @@
 
         <script>
             var rend = new Renderer();
-            rend.render('1990', data['1990']); // todo: render more boxes inside different divs
+
+            // 3rd and 4th render arguments indicate the file path prefix before "blue[1-4].svg", smile and frown, respectively
+            // e.g. the 3rd argument below corresponds to the smiles SVG/square_big_smile[1-4].svg
+            rend.render('1990', data['1990'], 'SVG/square_big_', 'SVG/'); // todo: render more boxes inside different divs
         </script>
 
     </body>

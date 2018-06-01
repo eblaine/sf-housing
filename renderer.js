@@ -5,7 +5,7 @@ class Renderer {
         this.housing_endpoint = 'https://eblaine.lib.id/sf-housing@dev/';
     }
 
-    render(divId, data) {
+    render(divId, data, smileFilePrefix='SVG/square_thin_', frownFilePrefix='SVG/square_') {
         let xhr = new XMLHttpRequest();
         xhr.open('POST', this.housing_endpoint);
         xhr.setRequestHeader("Content-Type", "application/json");
@@ -18,7 +18,9 @@ class Renderer {
         }
 
         data = {
-            'dataPoints': data
+            'dataPoints': data,
+            'smileFilePrefix': smileFilePrefix,
+            'frownFilePrefix': frownFilePrefix,
         };
 
         data = JSON.stringify(data);
