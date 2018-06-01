@@ -1,6 +1,11 @@
 # sf-housing
 A interactive explainer of housing in SF over time
 
+## Running
+Fortunately, it's really easy to make changes and run this!
+Just open index.html in Chrome. If your connection is bad, the faces may take 
+a moment to appear. 
+
 ## Rendering
 There is a rendering API endpoint that expects post requests with data of the form 
 specified in `data.js`. That endpoint generates HTML for the smile/frown visualization
