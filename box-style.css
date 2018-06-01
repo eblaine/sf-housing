@@ -1,23 +1,18 @@
 .face {
-    width: 60px;
-}
-
-.smiles {
-    /* hack to get width = 10 faces: width of .smiles in 10x .face  */
-    width: 600px; 
+    width: 10%;
 }
 
 .box {
     display: flex;
-    margin-top: 30px;
-    width: 940px;
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
 }
 
 .income-label, .population {
-    padding-left: 20px;
-    width: 150px;
-    font-size: 20px; 
-    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+    min-width: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
