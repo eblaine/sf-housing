@@ -11,20 +11,23 @@
     </head>
     <body>
 
+        <!-- INTRO -->
         <div id="intro_container">
-
             <div id="intro">
                 <p><b>The Town of Arbolito</b></p>
                 <p>A Story of the Housing Crisis</p>
             </div>
         </div>
 
+        <!-- TEXT -->
         <div class="text">
-            
             <div class="instruction">
                 <p><strong>It's the year 1990. You're in the town of Arbolito.</strong></p>
             </div>
             <p> Residents in Arbolito fall into different income brackets. These brackets are defined by the median family income.</p>
+            
+            <img class="img-center" src="images/SVG/MedianFamilyIncome.svg"/><br>
+
             <p>
                 <img src="images/SVG/square_big_smile_blue1.svg" height="30"/> make 0-30% of the median family income, <br>
                 <img src="images/SVG/square_big_smile_blue2.svg" height="30"/> make 31-50% of the median family income, <br>
@@ -32,16 +35,17 @@
                 <img src="images/SVG/square_big_smile_blue4.svg" height="30"/> make > 80% of the median family income. <br>
             </p>
 
-            <img class="img-center" src="images/SVG/MedianFamilyIncome.svg"/><br>
+            <p> Many in Arbolito are <i>rent overburdened</i>. You're considered rent overburdened if your rent accounts for <i>over 30%</i> of your income. By that definition, <b>64%</b> of people in Arbolito are rent overburdened.</p>
 
             <div class="instruction">
-                <p><br>In terms of income distribution, Arbolito looks like this:</p>
+                <p><br>In the year 1990, Arbolito looks like this:</p>
             </div>
         </div>
 
-        <!-- PLAYABLE -->
+        <!-- GRAPHIC -->
         <div class="graphic">
-            <p style="text-align: center;"> Arbolito in 1990... </p>
+<!--             <p style="text-align: center;"> Arbolito in 1990... </p> -->
+            <br>            
             <div id="1990">
                 <script>
                     var rend = new Renderer();
@@ -54,11 +58,52 @@
             <br>
         </div>
 
+        <!-- TEXT -->
+        <div class="text">
+            <p> There’s a sudden burst of internet companies being created in and around Arbolito, and rent prices in Arbolito start increasing. </p>
+            <p> You might suspect that this means a <i>higher</i> percentage people in Arbolito are rent overburdened, <i>but</i> the demographics of Arbolito start to change. </p>
+            <p> The new companies hire many high wage workers, so the percentage of high earners increases. With a higher percentage of people in higher income brackets, the percentage of people that are rent overburdened drops to <b>33%</b>. </p>
 
-        
+            <div class="instruction">
+                <p><br>By the year 2000, Arbolito looks like this:</p>
+            </div>
+        </div>
 
-        <div>asdf</div>
-        <div id="2000"></div>
-        
+        <!-- GRAPHIC -->
+        <div class="graphic">
+            <br>            
+            <div id="2000">
+                <script>
+                    var rend = new Renderer();
+                    rend.render('2000', data['2000'], 'SVG/square_big_', 'SVG/'); // todo: render more boxes inside different divs
+                </script>
+            </div>
+            <br>
+        </div>
+
+        <!-- TEXT -->
+        <div class="text">
+            <p> To residents, it feels like many people were displaced, and housing prices only continue rising. </p>
+            <p> Even though many more people in Arbolito have a higher income, <b>42%</b> are rent overburdened because rent prices have continued rising. </p>
+
+            <div class="instruction">
+                <p><br>By the year 2010, Arbolito looks like this:</p>
+            </div>
+        </div>
+
+
+        <!-- GRAPHIC -->
+        <div class="graphic">
+            <br>            
+            <div id="2010">
+                <script>
+                    var rend = new Renderer();
+                    rend.render('2010', data['2010'], 'SVG/square_big_', 'SVG/'); // todo: render more boxes inside different divs
+                </script>
+            </div>
+            <br>
+        </div>
+
+
     </body>
 </html>
