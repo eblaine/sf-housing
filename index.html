@@ -1,29 +1,64 @@
 <html>
     <head>
+        <title>Arbolito - a story of the housing crisis</title>
         <link rel="stylesheet" href="box-style.css"/>
+        <link rel="stylesheet" href="index.css"/>
         <!-- Makes call to rendering API -->
         <script src="renderer.js"></script>
         <!-- Puts an object called `data` in global scope -->
         <!-- TODO: add the static data points to this file (the last will be editable in JS) -->
         <script src="data.js"></script> 
-        
     </head>
     <body>
+
+        <div id="intro_container">
+
+            <div id="intro">
+                <p><b>The Town of Arbolito</b></p>
+                <p>A Story of the Housing Crisis</p>
+            </div>
+        </div>
+
+        <div class="text">
+            
+            <div class="instruction">
+                <p><strong>It's the year 1990. You're in the town of Arbolito.</strong></p>
+            </div>
+            <p> Residents in Arbolito fall into different income brackets. These brackets are defined by the median family income.</p>
+            <p>
+                <img src="images/SVG/square_big_smile_blue1.svg" height="30"/> make 0-30% of the median family income, <br>
+                <img src="images/SVG/square_big_smile_blue2.svg" height="30"/> make 31-50% of the median family income, <br>
+                <img src="images/SVG/square_big_smile_blue3.svg" height="30"/> make 51-80% of the median family income, and <br>
+                <img src="images/SVG/square_big_smile_blue4.svg" height="30"/> make > 80% of the median family income. <br>
+            </p>
+
+            <img class="img-center" src="images/SVG/MedianFamilyIncome.svg"/><br>
+
+            <div class="instruction">
+                <p><br>In terms of income distribution, Arbolito looks like this:</p>
+            </div>
+        </div>
+
+        <!-- PLAYABLE -->
+        <div class="graphic">
+            <p style="text-align: center;"> Arbolito in 1990... </p>
+            <div id="1990">
+                <script>
+                    var rend = new Renderer();
+
+                    // 3rd and 4th render arguments indicate the file path prefix before "blue[1-4].svg", smile and frown, respectively
+                    // e.g. the 3rd argument below corresponds to the smiles SVG/square_big_smile[1-4].svg
+                    rend.render('1990', data['1990'], 'SVG/square_big_', 'SVG/'); // todo: render more boxes inside different divs
+                </script>
+            </div>
+            <br>
+        </div>
+
+
         
-        <div>It's 1990!</div>
-        <div id="1990"></div>
 
         <div>asdf</div>
         <div id="2000"></div>
         
-
-        <script>
-            var rend = new Renderer();
-
-            // 3rd and 4th render arguments indicate the file path prefix before "blue[1-4].svg", smile and frown, respectively
-            // e.g. the 3rd argument below corresponds to the smiles SVG/square_big_smile[1-4].svg
-            rend.render('1990', data['1990'], 'SVG/square_big_', 'SVG/'); // todo: render more boxes inside different divs
-        </script>
-
     </body>
 </html>
