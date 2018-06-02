@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="box-style.css"/>
+        <link rel="stylesheet" href="slider-style.css"/>
+        
+        <!-- Makes call to rendering API -->
+        <script src="renderer.js"></script>
+        <script src="sliderBox.js"></script>
+        
+        <!-- Puts an object called `data` in global scope -->
+        <!-- TODO: add the static data points to this file (the last will be editable in JS) -->
+        <script src="data.js"></script> 
+        
+    </head>
+    <body>
+
+        <div id="construction">
+            <h3>See the effect of regulation in construction!</h3>
+            <div class="slidecontainer">
+                <label>Regulation index:</label>
+                <input type="range" min="1" max="100" value="50" class="slider" id="construction-slider">
+            </div>
+            <div id="construction-slider-box"></div>
+        </div>
+        
+
+        <script>
+            var rend = new Renderer();
+            rend.render('construction-slider-box', data['2018'], 'SVG/square_thin_', 'SVG/square_'); 
+
+            // This format should be consistent 
+            // These update functions should take 2 arguments: (1) should be the slider var and (2) a current housing price
+            function constructionIndexToPriceChange(constructionIndex) {
+                return -0.0092 + 0.0006 * constructionIndex;
+            }
+            var initialHousingPrice = 3000;
+            var constructionSliderBox = new SliderBox(rend, 'construction-slider-box',  'construction-slider', data['2018'], 'SVG/square_thin_', 'SVG/square_', constructionIndexToPriceChange, initialHousingPrice);
+            
+        </script>
+
+    </body>
+</html>
