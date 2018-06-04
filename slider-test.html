@@ -8,33 +8,49 @@
         <script src="sliderBox.js"></script>
         
         <!-- Puts an object called `data` in global scope -->
-        <!-- TODO: add the static data points to this file (the last will be editable in JS) -->
         <script src="data.js"></script> 
         
     </head>
     <body>
 
-        <div id="construction">
-            <h3>See the effect of regulation in construction!</h3>
+        <div id="minwage">
+            <h3>See the effect of varying minimum wage!</h3>
             <div class="slidecontainer">
-                <label>Regulation index:</label>
-                <input type="range" min="1" max="100" value="50" class="slider" id="construction-slider">
+                <div>$5/hr</div>
+                <input type="range" min="5" max="25" value="14" class="slider" id="minwage-slider">
+                <div>$25/hr</div>    
+                <button onclick="reset('minwage-slider-box', 'minwage-slider', 14)">RESET</button>            
             </div>
-            <div id="construction-slider-box"></div>
+            <div id="minwage-slider-box"></div>
         </div>
         
 
         <script>
             var rend = new Renderer();
-            rend.render('construction-slider-box', data['2018'], 'SVG/square_thin_', 'SVG/square_'); 
+            var year = '1990';
+            rend.render('minwage-slider-box', data[year], 'SVG/square_thin_', 'SVG/square_'); 
 
-            // This format should be consistent 
-            // These update functions should take 2 arguments: (1) should be the slider var and (2) a current housing price
-            function constructionIndexToPriceChange(constructionIndex) {
-                return -0.0092 + 0.0006 * constructionIndex;
+            function reset(boxId, sliderId, origVal) {
+                rend.render(boxId, data[year], 'SVG/square_thin_', 'SVG/square_'); 
+                document.getElementById(sliderId).value = origVal;
             }
-            var initialHousingPrice = 3000;
-            var constructionSliderBox = new SliderBox(rend, 'construction-slider-box',  'construction-slider', data['2018'], 'SVG/square_thin_', 'SVG/square_', constructionIndexToPriceChange, initialHousingPrice);
+
+            // This format should be semi-consistent 
+            function minWageUpdate(minWage) {
+                if (!this.minWage) this.minWage = minWage;
+
+                let prevMinWage = this.minWage;
+                this.minWage = minWage;
+                this.incomes['low'] = minWage * 40 * 52;
+                let minWageFraction = this.data['low']['total'] / 100;
+                let percentChangeIncome = 100 * minWageFraction * (minWage - prevMinWage) / prevMinWage;
+                let housingChange = 1.2393 + (0.4461 * percentChangeIncome);
+
+                return housingChange;
+            }
+            var initialHousingPrice = 25000;
+            var mfi = 95000;
+            var minWageSliderBox = new SliderBox(rend, 'minwage-slider-box',  'minwage-slider', data[year], 'SVG/square_thin_', 'SVG/square_', minWageUpdate, initialHousingPrice, mfi);
             
         </script>
 

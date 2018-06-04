@@ -51,6 +51,7 @@ body{
 
 .graphic{
 	width: 100%;
+	padding: 10px;
 	/*background: #222;*/
 	background: #aaaaaa;
 	overflow: hidden;

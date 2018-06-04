@@ -2,9 +2,13 @@
     <head>
         <title>Arbolito - a story of the housing crisis</title>
         <link rel="stylesheet" href="box-style.css"/>
+        <link rel="stylesheet" href="slider-style.css"/>
         <link rel="stylesheet" href="index.css"/>
         <!-- Makes call to rendering API -->
         <script src="renderer.js"></script>
+        <!-- Slider box  -->
+        <script src="sliderBox.js"></script>
+        
         <!-- Puts an object called `data` in global scope -->
         <!-- TODO: add the static data points to this file (the last will be editable in JS) -->
         <script src="data.js"></script> 
@@ -49,10 +53,13 @@
             <div id="1990">
                 <script>
                     var rend = new Renderer();
+                    var smilePath = 'SVG/square_big_';
+                    var frownPath = 'SVG/';
+
 
                     // 3rd and 4th render arguments indicate the file path prefix before "blue[1-4].svg", smile and frown, respectively
                     // e.g. the 3rd argument below corresponds to the smiles SVG/square_big_smile[1-4].svg
-                    rend.render('1990', data['1990'], 'SVG/square_big_', 'SVG/'); // todo: render more boxes inside different divs
+                    rend.render('1990', data['1990'], smilePath, frownPath); 
                 </script>
             </div>
             <br>
@@ -75,7 +82,7 @@
             <div id="2000">
                 <script>
                     var rend = new Renderer();
-                    rend.render('2000', data['2000'], 'SVG/square_big_', 'SVG/'); // todo: render more boxes inside different divs
+                    rend.render('2000', data['2000'], smilePath, frownPath); 
                 </script>
             </div>
             <br>
@@ -98,12 +105,91 @@
             <div id="2010">
                 <script>
                     var rend = new Renderer();
-                    rend.render('2010', data['2010'], 'SVG/square_big_', 'SVG/'); // todo: render more boxes inside different divs
+                    rend.render('2010', data['2010'], smilePath, frownPath); 
                 </script>
             </div>
             <br>
         </div>
 
+        <!-- TEXT -->
+        <div class="text">
+            <p> Arbolito's best social scientists are actively studying the housing trends.</p>
+
+            <div class="instruction">
+                <p><br>By the year 2020, they predict Arbolito will look like this:</p>
+            </div>
+        </div>
+
+
+        <!-- GRAPHIC -->
+        <div class="graphic">
+            <br>            
+            <div id="2018">
+                <script>
+                    rend.render('2018', data['2018'], smilePath, frownPath); 
+                </script>
+            </div>
+            <br>
+        </div>
+
+        <!-- TEXT -->
+        <div class="text">
+            <p>The experts are working on different strategies to fix the problem. Their first idea was to <i>increase minimum wage.</i> </p>
+            <p>However, that didn't work out as expected. Housing prices increased, and the rich voters in Arbolito were upset. 
+            Even worse, finding affordable housing was still very hit-or-miss.</p>
+
+            <div class="instruction">
+                <p><br>Try it out yourself:</p>
+            </div>
+        </div>
+
+        <!-- INTERACTIVE GRAPHIC -->
+        <div class="graphic">
+            <div class="slidecontainer">
+                <div><b>Minimum wage:</b></div>
+                <div>$5/hr</div>
+                <input type="range" min="5" max="25" value="14" class="slider" id="minwage-slider">
+                <div>$25/hr</div>    
+                <button onclick="reset('minwage-slider-box', 'minwage-slider', 14)">RESET</button>            
+            </div>
+            <div id="minwage-slider-box"></div>
+        </div>
+
+
+        <script>
+            var year = '2018';
+            rend.render('minwage-slider-box', data[year], smilePath, frownPath); 
+
+            function reset(boxId, sliderId, origVal) {
+                rend.render(boxId, data[year], smilePath, frownPath); 
+                document.getElementById(sliderId).value = origVal;
+            }
+
+            // This format should be semi-consistent 
+            // Assume input is the slider value. Output should be a % change in housing (0-100)
+            // You have access to this.incomes (e.g. this.incomes['low'] is a number)
+            // You also have access to the 2018 entry in data.js as this.data
+            // Feel free to add other variables needed. For example, here I added minWage to keep track of the previous value
+            function minWageUpdate(minWage) {
+                if (!this.minWage) this.minWage = minWage;
+
+                let prevMinWage = this.minWage;
+                this.minWage = minWage;
+                this.incomes['low'] = minWage * 40 * 52;
+                let minWageFraction = this.data['low']['total'] / 100;
+                let percentChangeIncome = 100 * minWageFraction * (minWage - prevMinWage) / prevMinWage;
+                let housingChange = 1.2393 + (0.4461 * percentChangeIncome);
+
+                return housingChange;
+            }
+            var initialHousingPrice = 25000;
+            var mfi = 95000;
+            var minWageSliderBox = new SliderBox(rend, 'minwage-slider-box',  'minwage-slider', data[year], smilePath, frownPath, minWageUpdate, initialHousingPrice, mfi);
+            
+        </script>
+
+
+        <!-- TODO: insert more interactive boxes. This should only require editing this file.  -->
 
     </body>
 </html>
