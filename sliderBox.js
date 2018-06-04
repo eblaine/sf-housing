@@ -2,11 +2,12 @@ class SliderBox {
     constructor(renderer, boxId,  sliderId, dataPoints, smileFilePrefix='SVG/square_thin_', frownFilePrefix='SVG/square_', housingPriceFn, initialHousingPrice, mfi) {
         let slider = document.getElementById(sliderId);
         this.housingPrice = initialHousingPrice;
+        // TODO (Mayank): edit based on pseudocode values
         this.incomes = {
             'low': 29120,
             'lowMiddle': mfi * 0.5,
             'highMiddle': mfi * 0.8,
-            'high': mfi * 1
+            'high': mfi * 1.25
         }
 
         this.housingPriceFn = housingPriceFn;
@@ -49,7 +50,6 @@ class SliderBox {
                 range = max - comfortableThreshold; // in between comfortable and max
                 rent = Math.random() * range + comfortableThreshold;
             } else {
-                // range = comfortableThreshold - min;
                 rent = comfortableThreshold * Math.random();      
             }
             rents.push(rent);

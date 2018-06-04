@@ -57,6 +57,7 @@ var data = {
     },
 
 
+    // TODO (Mayank): edit totals based on pseudocode. 
     '2018': {
         'low': {
             'total': 6,

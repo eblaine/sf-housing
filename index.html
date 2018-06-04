@@ -179,7 +179,7 @@
 
                 let prevMinWage = this.minWage;
                 this.minWage = minWage;
-                this.incomes['low'] = minWage * 40 * 52;
+                this.incomes['low'] = minWage * 40 * 50;
                 let minWageFraction = this.data['low']['total'] / 100;
                 let percentChangeIncome = 100 * minWageFraction * (minWage - prevMinWage) / prevMinWage;
                 let housingChange = (0.4461 * percentChangeIncome);
