@@ -151,7 +151,7 @@
         <!-- INTERACTIVE GRAPHIC -->
         <div class="graphic">
             <div class="slidecontainer">
-                <div><b>Minimum wage: <span id="minwage"></span></b></div>
+                <div><b>Minimum wage: $<span id="minwage"></span></b></div>
                 <div>$14/hr</div>
                 <input type="range" min="14" max="28" value="14" class="slider" id="minwage-slider">
                 <div>$28/hr</div>    
@@ -163,11 +163,10 @@
 
         <script>
             var year = '2018';
-            rend.render('minwage-slider-box', data[year], smilePath, frownPath); 
-
             function reset(boxId, sliderId, origVal) {
                 rend.render(boxId, data[year], smilePath, frownPath); 
                 document.getElementById(sliderId).value = origVal;
+                document.getElementById('minwage').innerHTML = 14;
             }
 
             // This format should be semi-consistent 
@@ -193,6 +192,8 @@
             var mfi = 95000;
             var minWageSliderBox = new SliderBox(rend, 'minwage-slider-box',  'minwage-slider', data[year], smilePath, frownPath, minWageUpdate, initialHousingPrice, mfi);
             
+            reset('minwage-slider-box', 'minwage-slider', 14);
+
         </script>
 
 
