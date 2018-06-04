@@ -6,6 +6,13 @@ Fortunately, it's really easy to make changes and run this!
 Just open index.html in Chrome. If your connection is bad, the faces may take 
 a moment to appear. 
 
+## Deploying
+If you'd like, you can deploy the project yourself. You'll have to send me a gmail (non-stanford)
+first so I can add you. -Ellen
+```
+firebase deploy --project sf-housing-247
+```
+
 ## Rendering
 There is a rendering API endpoint that expects post requests with data of the form 
 specified in `data.js`. That endpoint generates HTML for the smile/frown visualization
