@@ -37,6 +37,6 @@
 }
 
 button {
-    min-width: 75px;
+    width: 150px;
     margin-left: 5px;
 }
