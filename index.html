@@ -140,8 +140,8 @@
         <!-- TEXT -->
         <div class="text">
             <p>The experts are working on different strategies to fix the problem. Their first idea was to <i>increase minimum wage.</i> </p>
-            <p>However, that didn't work out as expected. Housing prices increased, and the rich voters in Arbolito were upset. 
-            Even worse, finding affordable housing was still very hit-or-miss.</p>
+            <p>However, that didn't work out as expected. Housing prices increased for everyone.
+                Even worse, finding affordable housing was just as hard for everyone else.</p>
 
             <div class="instruction">
                 <p><br>Try it out yourself:</p>
@@ -151,10 +151,10 @@
         <!-- INTERACTIVE GRAPHIC -->
         <div class="graphic">
             <div class="slidecontainer">
-                <div><b>Minimum wage:</b></div>
-                <div>$5/hr</div>
-                <input type="range" min="5" max="25" value="14" class="slider" id="minwage-slider">
-                <div>$25/hr</div>    
+                <div><b>Minimum wage: <span id="minwage"></span></b></div>
+                <div>$14/hr</div>
+                <input type="range" min="14" max="28" value="14" class="slider" id="minwage-slider">
+                <div>$28/hr</div>    
                 <button onclick="reset('minwage-slider-box', 'minwage-slider', 14)">RESET</button>            
             </div>
             <div id="minwage-slider-box"></div>
@@ -183,7 +183,9 @@
                 this.incomes['low'] = minWage * 40 * 52;
                 let minWageFraction = this.data['low']['total'] / 100;
                 let percentChangeIncome = 100 * minWageFraction * (minWage - prevMinWage) / prevMinWage;
-                let housingChange = 1.2393 + (0.4461 * percentChangeIncome);
+                let housingChange = (0.4461 * percentChangeIncome);
+
+                document.getElementById('minwage').innerHTML = minWage;
 
                 return housingChange;
             }

@@ -31,7 +31,7 @@ class SliderBox {
     }
 
     __updateSingleBracket(bracket, housingPricePercentageChange) {
-        let numToUpdate = this.data[bracket]['total'];
+        let numToUpdate = 1000;
         let likelihoodOverburdened = this.data[bracket]['overburdened'];
         likelihoodOverburdened = Math.min(90, Math.max(10, likelihoodOverburdened)) / 100;
         let min = this.incomes[bracket] * 0.2;
@@ -49,10 +49,9 @@ class SliderBox {
                 range = max - comfortableThreshold; // in between comfortable and max
                 rent = Math.random() * range + comfortableThreshold;
             } else {
-                rent = min * Math.ran
-                
+                // range = comfortableThreshold - min;
+                rent = comfortableThreshold * Math.random();      
             }
-            rent = Math.min(maxRentPos, rent);
             rents.push(rent);
             
         }
