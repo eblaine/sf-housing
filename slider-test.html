@@ -43,8 +43,8 @@
                 this.minWage = minWage;
                 this.incomes['low'] = minWage * 40 * 50;
                 let minWageFraction = this.data['low']['total'] / 100;
-                let percentChangeIncome = 100 * (minWage - prevMinWage) / prevMinWage;
-                let housingChange = 1.2393 + (0.4461 * percentChangeIncome);
+                let percentChangeIncome = 100 * minWageFraction * (minWage - prevMinWage) / prevMinWage;
+                let housingChange = (0.4461 * percentChangeIncome); // removed added constant of ~1 because housingCHange was always positive
 
                 return housingChange;
             }
