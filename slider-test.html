@@ -32,7 +32,10 @@
 
             function reset(boxId, sliderId, origVal) {
                 rend.render(boxId, data[year], 'SVG/square_thin_', 'SVG/square_'); 
-                document.getElementById(sliderId).value = origVal;
+                var slider = document.getElementById(sliderId);
+                var box = document.getElementById(boxId);
+                slider.value = origVal;
+                box.resetRents(data[year]);
             }
 
             // This format should be semi-consistent 
@@ -45,6 +48,7 @@
                 let minWageFraction = this.data['low']['total'] / 100;
                 let percentChangeIncome = 100 * minWageFraction * (minWage - prevMinWage) / prevMinWage;
                 let housingChange = (0.4461 * percentChangeIncome); // removed added constant of ~1 because housingCHange was always positive
+
 
                 return housingChange;
             }

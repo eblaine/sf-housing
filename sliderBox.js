@@ -19,28 +19,29 @@ class SliderBox {
             this._updateData(housingPricePercentageChange);
             renderer.render(boxId, this.data, smileFilePrefix, frownFilePrefix);
         }.bind(this);
+
+        this.rents = {};
+        this.resetRents(this.data);
     }
 
-    _updateData(housingPricePercentageChange) {
-
-        this.housingPrice += this.housingPrice * housingPricePercentageChange / 100
-        let keysCopy = Object.keys(this.data);
-        keysCopy.map(function(bracket) {
-            this.__updateSingleBracket(bracket, housingPricePercentageChange);
+    resetRents(origData) {
+        Object.keys(origData).map(function(bracket) {
+            this.__resetRent(origData, bracket);
         }.bind(this));
-        
+        this.data = origData;
     }
 
-    __updateSingleBracket(bracket, housingPricePercentageChange) {
+    __resetRent(origData, bracket) {
         let numToUpdate = 1000;
-        let likelihoodOverburdened = this.data[bracket]['overburdened'];
+        let likelihoodOverburdened = origData[bracket]['overburdened'];
         likelihoodOverburdened = Math.min(90, Math.max(10, likelihoodOverburdened)) / 100;
         let min = this.incomes[bracket] * 0.2;
         let comfortableThreshold = this.incomes[bracket] * 0.3;
+
+        this.rents[bracket] = []
         let max = this.incomes[bracket] * 0.5;
 
         let maxRentPos = 1.2 * this.housingPrice;
-        let rents = [];
 
         for (let i = 0; i < numToUpdate; i++) {
             let wasOverburdened = Math.random() < likelihoodOverburdened;
@@ -52,17 +53,31 @@ class SliderBox {
             } else {
                 rent = comfortableThreshold * Math.random();      
             }
-            rents.push(rent);
-            
+            this.rents[bracket].push(rent);  
         }
+    }
 
+    _updateData(housingPricePercentageChange) {
+
+        this.housingPrice += this.housingPrice * housingPricePercentageChange / 100;
+        let keysCopy = Object.keys(this.data);
+        keysCopy.map(function(bracket) {
+            this.__updateSingleBracket(bracket, housingPricePercentageChange);
+        }.bind(this));
+        
+    }
+
+    __updateSingleBracket(bracket, housingPricePercentageChange) {
+        let min = this.incomes[bracket] * 0.2;
+        let comfortableThreshold = this.incomes[bracket] * 0.3;
+        
         let newOverburdened = 0;
-        rents.forEach((rent) => {
+        this.rents[bracket].forEach((rent) => {
             let newRent = rent + (rent * housingPricePercentageChange / 100);
             newOverburdened += newRent > comfortableThreshold;
         });
         
-        this.data[bracket]['overburdened'] = Math.round(100 * newOverburdened / rents.length);
+        this.data[bracket]['overburdened'] = Math.round(100 * newOverburdened / this.rents[bracket].length);
     }
 
 }
