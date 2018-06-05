@@ -165,8 +165,10 @@
             var year = '2018';
             function reset(boxId, sliderId, origVal) {
                 rend.render(boxId, data[year], smilePath, frownPath); 
-                document.getElementById(sliderId).value = origVal;
-                document.getElementById('minwage').innerHTML = 14;
+                var slider = document.getElementById(sliderId);
+                var box = document.getElementById(boxId);
+                slider.value = origVal;
+                box.resetRents(data[year]);
             }
 
             // This format should be semi-consistent 
@@ -184,9 +186,7 @@
                 let percentChangeIncome = 100 * minWageFraction * (minWage - prevMinWage) / prevMinWage;
                 let housingChange =  (0.4461 * percentChangeIncome);// removed added constant of ~1 because housingCHange was always positive
 
-
                 document.getElementById('minwage').innerHTML = minWage;
-
                 return housingChange;
             }
             var initialHousingPrice = 25000;
