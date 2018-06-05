@@ -15,6 +15,26 @@
     </head>
     <body>
 
+        <script>
+            // SETUP
+            var smilePath = 'SVG/square_big_';
+            var frownPath = 'SVG/';
+            var year1 = '1990';
+            var year2 = '2000';
+            var year3 = '2010';
+            var year4 = '2020'; 
+            var rend = new Renderer();
+            
+            // for radio buttons to swap data in box to another year
+            function radioHandler(event) {
+                debugger;
+                var boxId = event.target.value;
+                var year = event.target.labels[0].innerText;
+                if (year === '2020') year = '2018';
+                rend.render(boxId, data[year], smilePath, frownPath);
+            }
+        </script>
+
         <!-- INTRO -->
         <div id="intro_container">
             <div id="intro">
@@ -56,18 +76,13 @@
 <!--             <p style="text-align: center;"> Arbolito in 1990... </p> -->
             <br>            
             <div id="1990">
-                <script>
-                    var rend = new Renderer();
-                    var smilePath = 'SVG/square_big_';
-                    var frownPath = 'SVG/';
-
-
-                    // 3rd and 4th render arguments indicate the file path prefix before "blue[1-4].svg", smile and frown, respectively
-                    // e.g. the 3rd argument below corresponds to the smiles SVG/square_big_smile[1-4].svg
-                    rend.render('1990', data['1990'], smilePath, frownPath); 
-                </script>
             </div>
             <br>
+            <script>
+                // 3rd and 4th render arguments indicate the file path prefix before "blue[1-4].svg", smile and frown, respectively
+                // e.g. the 3rd argument below corresponds to the smiles SVG/square_big_smile[1-4].svg
+                rend.render(year1, data[year1], smilePath, frownPath); 
+            </script>
         </div>
 
         <!-- TEXT -->
@@ -83,14 +98,19 @@
 
         <!-- GRAPHIC -->
         <div class="graphic">
-            <br>            
-            <div id="2000">
-                <script>
-                    var rend = new Renderer();
-                    rend.render('2000', data['2000'], smilePath, frownPath); 
-                </script>
+            <br>  
+            <div id="2000-radio" class="radiogroup">
+                <label><input type="radio"  name="2000-buttons" value="2000">1990</label>
+                <label><input type="radio" name="2000-buttons" value="2000" checked>2000</label>
+            </div>      
+            <div id="2000">   
             </div>
             <br>
+
+            <script>
+                document.getElementById('2000-radio').onclick = radioHandler;
+                rend.render(year2, data[year2], smilePath, frownPath); 
+            </script>
         </div>
 
         <!-- TEXT -->
@@ -105,11 +125,16 @@
 
         <!-- GRAPHIC -->
         <div class="graphic">
-            <br>            
+            <br>   
+            <div id="2010-radio" class="radiogroup">
+                <label><input type="radio" name="2010-buttons"  value="2010">1990</label>
+                <label><input type="radio" name="2010-buttons" value="2010">2000</label>                
+                <label><input type="radio" name="2010-buttons" value="2010" checked>2010</label>
+            </div>         
             <div id="2010">
                 <script>
-                    var rend = new Renderer();
-                    rend.render('2010', data['2010'], smilePath, frownPath); 
+                    document.getElementById('2010-radio').onclick = radioHandler;
+                    rend.render(year3, data[year3], smilePath, frownPath); 
                 </script>
             </div>
             <br>
@@ -179,9 +204,16 @@
 
         <!-- GRAPHIC -->
         <div class="graphic">
-            <br>            
+            <br>    
+            <div id="2018-radio" class="radiogroup">
+                <label><input type="radio" name="2020-buttons"  value="2018">1990</label>
+                <label><input type="radio" name="2020-buttons" value="2018">2000</label>                
+                <label><input type="radio" name="2020-buttons" value="2018">2010</label>                
+                <label><input type="radio" name="2020-buttons" value="2018" checked="true">2020</label>
+            </div>         
             <div id="2018">
                 <script>
+                    document.getElementById('2018-radio').onclick = radioHandler;
                     rend.render('2018', data['2018'], smilePath, frownPath); 
                 </script>
             </div>
@@ -208,6 +240,14 @@
 
         <!-- INTERACTIVE GRAPHIC -->
         <div class="graphic">
+            <!-- <div id="2018-radio-wage">
+                <span>Showing year:</span>
+                <label><input type="radio" name="2020-buttons-wage"  value="minwage-slider-box">1990</label>
+                <label><input type="radio" name="2020-buttons-wage" value="minwage-slider-box">2000</label>                
+                <label><input type="radio" name="2020-buttons-wage" value="minwage-slider-box">2010</label>                
+                <label><input type="radio" name="2020-buttons-wage" value="minwage-slider-box" checked="true">2020</label>
+            </div>  -->
+
             <div class="slidecontainer">
                 <div><b>Minimum wage: $<span id="minwage"></span></b></div>
                 <div>$14/hr</div>
@@ -219,6 +259,13 @@
         </div>
         
         <div class="graphic">
+            <!-- <div id="2018-radio-reg">
+                <span>Showing year:</span>
+                <label><input type="radio" name="2020-buttons-reg"  value="regindex-slider-box">1990</label>
+                <label><input type="radio" name="2020-buttons-reg" value="regindex-slider-box">2000</label>                
+                <label><input type="radio" name="2020-buttons-reg" value="regindex-slider-box">2010</label>                
+                <label><input type="radio" name="2020-buttons-reg" value="regindex-slider-box" checked="true">2020</label>
+            </div>  -->
             <div class="slidecontainer">
                 <div><b>Regulation index: $<span id="regindex"></span></b></div>
                 <div>16</div>
@@ -286,6 +333,15 @@
             
             reset('minwage-slider-box', 'minwage-slider', 14);
             reset('regindex-slider-box', 'regindex-slider', 16);
+
+            // function sliderRadioHandler(event) {
+            //     var year = event.target.labels[0].innerText;
+
+            //     radioHandler(event);
+            // }
+
+            // document.getElementById('2018-radio-reg').onclick = sliderRadioHandler
+            // document.getElementById('2018-radio-wage').onclick = sliderRadioHandler;
 
         </script>
 

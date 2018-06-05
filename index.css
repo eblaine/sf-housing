@@ -84,8 +84,14 @@ body{
 	text-align:center; font-weight:bold; font-size:25px
 }
 
+.radiogroup {
+	display: flex;
+	justify-content: center;
+}
 
-
+label {
+	margin-left: 10px;
+}
 
 
 
