@@ -235,20 +235,30 @@
             // You also have access to the 2018 entry in data.js as this.data
             // Feel free to add other variables needed. For example, here I added minWage to keep track of the previous value
             function minWageUpdate(minWage) {
-                if (!this.minWage) this.minWage = minWage;
+                //if (!this.minWage) this.minWage = minWage;
 
-                let prevMinWage = this.minWage;
+                //let prevMinWage = this.minWage;
                 this.minWage = minWage;
-                this.incomes['low'] = minWage * 40 * 50;
-                let minWageFraction = this.data['low']['total'] / 100;
-                let percentChangeIncome = 100 * minWageFraction * (minWage - prevMinWage) / prevMinWage;
-                let housingChange =  (0.4461 * percentChangeIncome);// removed added constant of ~1 because housingCHange was always positive
+                let bracketsAffected = ['low']
+                if (minWage >=19) {
+                    bracketsAffected.push('lowMiddle')
+                }
+
+                for (let i = 0; i < bracketsAffected.length; i++) {
+                    this.incomes[bracketsAffected[i]] = minWage * 40 * 50;
+                }
+                
+                let housingChange = 0;
+                //let minWageFraction = this.data['low']['total'] / 100;
+                //let percentChangeIncome = 100 * minWageFraction * (minWage - prevMinWage) / prevMinWage;
+                //let housingChange =  (0.4461 * percentChangeIncome);// removed added constant of ~1 because housingCHange was always positive
 
                 document.getElementById('minwage').innerHTML = minWage;
                 return housingChange;
             }
+
             var initialHousingPrice = 25000;
-            var mfi = 95000;
+            var mfi = 75600; // updated based on data provided here: https://statisticalatlas.com/place/California/San-Francisco/Household-Income
             var minWageSliderBox = new SliderBox(rend, 'minwage-slider-box',  'minwage-slider', data[year], smilePath, frownPath, minWageUpdate, initialHousingPrice, mfi);
             
             reset('minwage-slider-box', 'minwage-slider', 14);

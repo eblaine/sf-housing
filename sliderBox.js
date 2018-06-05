@@ -2,12 +2,12 @@ class SliderBox {
     constructor(renderer, boxId,  sliderId, dataPoints, smileFilePrefix='SVG/square_thin_', frownFilePrefix='SVG/square_', housingPriceFn, initialHousingPrice, mfi) {
         let slider = document.getElementById(sliderId);
         this.housingPrice = initialHousingPrice;
-        // TODO (Mayank): edit based on pseudocode values
+        
         this.incomes = {
-            'low': 29120,
+            'low': 28000,
             'lowMiddle': mfi * 0.5,
             'highMiddle': mfi * 0.8,
-            'high': mfi * 1.25
+            'high': mfi * 2.00
         }
 
         this.housingPriceFn = housingPriceFn;
