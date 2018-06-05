@@ -72,10 +72,16 @@ class SliderBox {
         let comfortableThreshold = this.incomes[bracket] * 0.3;
         
         let newOverburdened = 0;
-        this.rents[bracket].forEach((rent) => {
+        for (let i = 0; i < this.rents[bracket].length; i++) {
+            let rent = this.rents[bracket][i];
             let newRent = rent + (rent * housingPricePercentageChange / 100);
+            this.rents[bracket][i] = newRent;
             newOverburdened += newRent > comfortableThreshold;
-        });
+        }
+        //this.rents[bracket].forEach((rent) => {
+        //    let newRent = rent + (rent * housingPricePercentageChange / 100);
+        //    newOverburdened += newRent > comfortableThreshold;
+        //});
         
         this.data[bracket]['overburdened'] = Math.round(100 * newOverburdened / this.rents[bracket].length);
     }
