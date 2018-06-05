@@ -95,6 +95,18 @@ label {
 	margin-left: 10px;
 }
 
+.callout-box {
+	position: relative;
+}
+
+.callout {
+	position: absolute;
+	width: 25%;
+	text-align: center;
+	left: 5%;
+	top: 30%;
+}
+
 
 
 
