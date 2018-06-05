@@ -8,6 +8,8 @@
 .slider-labels {
     display: flex;
     width: 40%;
+     position: relative; 
+     right: 15px; 
 }
 
 .slider {

@@ -87,6 +87,8 @@ body{
 .radiogroup {
 	display: flex;
 	justify-content: center;
+	position: relative;
+	right: 15px; /* box is being weird... */
 }
 
 label {

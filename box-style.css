@@ -1,24 +1,54 @@
 .face {
-    width: 10%;
+    width: 7%;
 }
 
 .box {
     display: flex;
-    width: 40%;
+    width: 50%;
     margin: auto;
-    margin-top: 20px;
+    justify-content: center;
+}
+
+.smiles {
+    /* width: 40%; */
+    margin: auto;
+    /* margin: 10px; */    
 }
 
 .income-label, .population {
+    flex-basis: 100px;
+    right: -30%;
+    top: 35%;
     margin-left: 20px;
     margin-right: 20px;
     min-width: 100px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+}
+
+.income-label {
+
 }
 
 img {
-    margin: 2px;
+    margin: 8px;
+    padding: 0;
 }
 
+
+.smiles.low {
+    background-color: #e8eef4;
+}
+
+.smiles.lowMiddle {
+    background-color: #a2bdd8;
+}
+
+.smiles.highMiddle {
+    background-color: #7590aa;
+}
+
+.smiles.high {
+    background-color: #39536d;
+}
