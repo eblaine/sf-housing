@@ -1,14 +1,18 @@
 .slidecontainer {
-    width: 60%;
     margin: auto;
     display: flex;
     margin-top: 30;
+    justify-content: space-around;
 }
 
+.slider-labels {
+    display: flex;
+    width: 40%;
+}
 
 .slider {
     -webkit-appearance: none;
-    width: 100%;
+     width: 100%; 
     height: 25px;
     background: #d3d3d3;
     outline: none;

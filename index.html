@@ -250,9 +250,11 @@
 
             <div class="slidecontainer">
                 <div><b>Minimum wage: $<span id="minwage"></span></b></div>
-                <div>$14/hr</div>
-                <input type="range" min="14" max="28" value="14" class="slider" id="minwage-slider">
-                <div>$28/hr</div>    
+                <div class="slider-labels">
+                    <div>$14/hr</div>
+                    <input type="range" min="14" max="28" value="14" class="slider" id="minwage-slider">
+                    <div>$28/hr</div>    
+                </div>
                 <button class="button" onclick="reset('minwage-slider-box', 'minwage-slider', 14)">RESET</button>            
             </div>
             <div id="minwage-slider-box"></div>
@@ -292,9 +294,11 @@
             </div>  -->
             <div class="slidecontainer">
                 <div><b>Regulation index: <span id="regindex"></span></b></div>
-                <div>16</div>
-                <input type="range" min="16" max="30" value="30" class="slider" id="regindex-slider">
-                <div>30</div>    
+                <div class="slider-labels">
+                    <div>16</div>
+                    <input type="range" min="16" max="30" value="30" class="slider" id="regindex-slider">
+                    <div>30</div>    
+                </div>
                 <button class="button" onclick="reset('regindex-slider-box', 'regindex-slider', 30)">RESET</button>            
             </div>
             <div id="regindex-slider-box"></div>
