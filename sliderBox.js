@@ -75,7 +75,9 @@ class SliderBox {
         for (let i = 0; i < this.rents[bracket].length; i++) {
             let rent = this.rents[bracket][i];
             let newRent = rent + (rent * housingPricePercentageChange / 100);
-            this.rents[bracket][i] = newRent;
+            //Actually we don't need to change rents as our models always calculate percentage 
+            //change in housing price on the base values. So commenting the following out
+            //this.rents[bracket][i] = newRent;
             newOverburdened += newRent > comfortableThreshold;
         }
         //this.rents[bracket].forEach((rent) => {

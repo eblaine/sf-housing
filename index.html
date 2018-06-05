@@ -217,6 +217,17 @@
             </div>
             <div id="minwage-slider-box"></div>
         </div>
+        
+        <div class="graphic">
+            <div class="slidecontainer">
+                <div><b>Regulation index: $<span id="regindex"></span></b></div>
+                <div>16</div>
+                <input type="range" min="16" max="30" value="16" class="slider" id="regindex-slider">
+                <div>30</div>    
+                <button class="button" onclick="reset('regindex-slider-box', 'regindex-slider', 16)">RESET</button>            
+            </div>
+            <div id="regindex-slider-box"></div>
+        </div>
 
 
         <script>
@@ -226,7 +237,8 @@
                 var slider = document.getElementById(sliderId);
                 var box = document.getElementById(boxId);
                 slider.value = origVal;
-                box.resetRents(data[year]);
+                //TODO (Ellen) fix error in the following line. Commenting it out for now.
+                //box.resetRents(data[year]);
             }
 
             // This format should be semi-consistent 
@@ -256,12 +268,24 @@
                 document.getElementById('minwage').innerHTML = minWage;
                 return housingChange;
             }
+            
+            function regIndexUpdate(regIndex) {
+            
+                this.regIndex = regIndex;
+                
+                let housingChange = 10000 * (-0.0092 + 0.0006 * regIndex);
 
+                document.getElementById('regindex').innerHTML = regIndex;
+                return housingChange;
+            }
+            
             var initialHousingPrice = 25000;
             var mfi = 75600; // updated based on data provided here: https://statisticalatlas.com/place/California/San-Francisco/Household-Income
             var minWageSliderBox = new SliderBox(rend, 'minwage-slider-box',  'minwage-slider', data[year], smilePath, frownPath, minWageUpdate, initialHousingPrice, mfi);
+            var regIndexSliderBox = new SliderBox(rend, 'regindex-slider-box',  'regindex-slider', data[year], smilePath, frownPath, regIndexUpdate, initialHousingPrice, mfi);
             
             reset('minwage-slider-box', 'minwage-slider', 14);
+            reset('regindex-slider-box', 'regindex-slider', 16);
 
         </script>
 
