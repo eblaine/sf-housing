@@ -316,7 +316,8 @@
             function reset(boxId, sliderId, origVal) {
                 rend.render(boxId, data[year], smilePath, frownPath); 
                 var slider = document.getElementById(sliderId);
-                var box = document.getElementById(boxId);
+                // be mindful of the fact that this is a DOM element, not SliderBox instance
+                // var box = document.getElementById(boxId);
                 slider.value = origVal;
                 //TODO (Ellen) fix error in the following line. Commenting it out for now.
                 //box.resetRents(data[year]);
