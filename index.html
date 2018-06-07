@@ -64,7 +64,7 @@
                 <img src="images/SVG/square_big_smile_blue4.svg" height="30"/> make > 80% of the median family income. <br>
             </p>
 
-            <p> Many in Arbolito are <i>rent overburdened</i>. You're considered rent overburdened if you spend <i>over 30%</i> of your income on rent for housing. By that definition, <b>64%</b> of people in Arbolito are rent overburdened.</p>
+            <p>  Many in Arbolito are <i>rent overburdened</i>. You're considered rent overburdened if you spend <i>over 30%</i> of your income on rent for housing. </p>
 
             <div class="instruction">
                 <p><br>In the year 1990, Arbolito looks like this:</p>
@@ -75,7 +75,15 @@
         <div class="graphic">
 <!--             <p style="text-align: center;"> Arbolito in 1990... </p> -->
             <br>            
-            <div id="1990">
+            <div class="callout-box"> 
+                <div class="callout">
+                    <p><b>64%</b> of people in Arbolito are rent overburdened. Those who are rent overburdened have a   
+                    <img src="images/SVG/frown_blank.svg" height="24"/>
+                    face.
+                    </p>
+                </div> 
+                <div id="1990">   
+                </div>
             </div>
             <br>
             <script>
@@ -89,7 +97,8 @@
         <div class="text">
             <p> There’s a sudden burst of internet companies being created in and around Arbolito, and rent prices in Arbolito start increasing. </p>
             <p> You might suspect that this means a <i>higher</i> percentage people in Arbolito are rent overburdened, <i>but actually</i> the demographics of Arbolito start to change. </p>
-            <p> The new companies hire many high wage workers, so the percentage of high earners increases. With a higher percentage of people in higher income brackets, the percentage of people that are rent overburdened drops to <b>33%</b>. </p>
+            <p> The new companies hire many high wage workers, so the percentage of high earners increases. 
+                And hardly any of the high income faces are rent overburdened! That means many of their incomes are likely <i>significantly</i> higher than 80% of the MFI.</p>
 
             <div class="instruction">
                 <p><br>By the year 2000, Arbolito looks like this:</p>
@@ -105,9 +114,13 @@
             </div> 
             <!-- TODO: add more callouts as it makes sense  -->
             <div class="callout-box"> 
-                <div class="callout">Hardly any of the high income faces are rent overburdened!
-                    That means many of their incomes are likely <i>significantly</i> higher than 80% of the MFI.
-                    Try comparing to 1990 to see the cost burden change.</div> 
+                <div class="callout">
+                    <p>
+                    With a much higher percentage of people in higher income brackets, the percentage of people that are rent overburdened drops to <b>33%</b>. 
+                    Try comparing to 1990 to see the cost burden change.
+                    </p>
+                </div> 
+               
                 <div id="2000">   
                 </div>
             </div>
@@ -122,7 +135,6 @@
         <!-- TEXT -->
         <div class="text">
             <p> To residents, it feels like many people were displaced, and housing prices only continue rising. </p>
-            <p> Even though many more people in Arbolito have a higher income, <b>42%</b> are rent overburdened because rent prices have continued rising. </p>
 
             <div class="instruction">
                 <p><br>By the year 2010, Arbolito looks like this:</p>
@@ -136,12 +148,21 @@
                 <label><input type="radio" name="2010-buttons"  value="2010">1990</label>
                 <label><input type="radio" name="2010-buttons" value="2010">2000</label>                
                 <label><input type="radio" name="2010-buttons" value="2010" checked>2010</label>
-            </div>         
-            <div id="2010">
-                <script>
-                    document.getElementById('2010-radio').onclick = radioHandler;
-                    rend.render(year3, data[year3], smilePath, frownPath); 
-                </script>
+            </div>   
+            <div class="callout-box"> 
+                <div class="callout">
+                    <p> Even though many more people in Arbolito have a higher income, <b>42%</b> are rent overburdened because rent prices have continued rising. </p>
+                </div>
+
+                <div id="2010">   
+                </div>
+            </div>
+            <br>
+
+            <script>
+                document.getElementById('2010-radio').onclick = radioHandler;
+                rend.render(year3, data[year3], smilePath, frownPath); 
+            </script>
             </div>
             <br>
         </div>
@@ -294,7 +315,7 @@
         <!-- TEXT -->
         <div class="text">
             <div class="instruction">
-                <p><strong>But don't lose hope!</strong></p>
+                <p><strong>We can keep trying!</strong></p>
                 <p><strong>Let's try to reduce construction regulation.</strong></p>
             </div>
 
@@ -302,7 +323,7 @@
             <p> 
                 This helped somewhat, because Arbolito imposes lots of expensive regulations that do not improve the livability of homes.
                 For example, city regulations require that low income housing in Arbolito is extremely attractive. 
-                However, Arbolito is susceptible to natural disasters like earthquakes, and it also has a very unique sewer system
+                However, Arbolito <i>is</i> susceptible to natural disasters like earthquakes, and it also has a very unique sewer system
                 that needs lots of monitoring. This means some amount of <b>expensive regulation is necessary for safety.</b>
             </p>
             <p>
@@ -334,6 +355,25 @@
                 <button class="button" onclick="reset('regindex-slider-box', 'regindex-slider', 30)">RESET</button>            
             </div>
             <div id="regindex-slider-box"></div>
+        </div>
+
+
+        <!-- FINAL TAKEAWAYS -->
+        <div id="outro_container">
+            <div id="outro">
+                <div class="instruction">
+                    <p>Thank you for learning about the story of Arbolito!</p>
+                </div>
+
+                <p>The story of Arbolito is actually the story of <i>San Francisco</i>, <br>
+                    all recreated from data on income distributions, housing prices, and zoning. </p>
+
+                <p> As a voter or policy advocate, your actions will affect housing in your area. </p>
+
+                <p> If you would like to learn more about the housing crisis in the San Francisco Bay Area, <br>
+                    here are some nonprofits you can learn from and support: the <a href="https://techequitycollaborative.org/">Tech Equity Collaborative</a>, <br>
+                    the <a href="https://www.sfhac.org/">San Francisco Housing Action Coalition</a>, and the <a href="https://nonprofithousing.org/"> Non-Profit Housing Association of Northern California</a>.
+            </div>
         </div>
 
 
