@@ -21,7 +21,7 @@ body{
 	background: #000;
 }
 
-.intro, #outro{
+#intro, #outro{
 	position: absolute;
 	/*width:0; height:0;*/
 	margin: auto;
